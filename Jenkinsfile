@@ -1,7 +1,7 @@
 node('agent-1') {
     stage('Build docker image') {
         try {
-            sh "docker build -t hk2802/flask-sample:v${BUILD_NUMBER} ."
+            sh "docker build -t hk202/flask-sample:v${BUILD_NUMBER} ."
         }
         catch (exc) {
             echo 'Stage: "Build docker image" has failed! Check Dockerfile for errors.'
