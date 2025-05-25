@@ -1,24 +1,19 @@
-node {
-stage('Build docker image') {
-    steps {
-            try {
+pipeline{
+    agent{
+        label "agent-1"
+    }
+    environment{
+        random_var='Jenkins-Docker-Push-Test'
+    }
+    stages{
+        stage("build Docker image"){
+            steps{
                 sh "docker build -t hk2802/flask-sample:v${BUILD_NUMBER} ."
             }
-            catch (exc) {
-                echo 'Stage: "Build docker image" has failed! Check Dockerfile for errors.'
-                throw
-            }
         }
-    }
-
-    stage('Push docker image') {
-        steps {
-            try {
+        stage("Push Docker image"){
+            steps{
                 sh "docker push hk2802/flask-sample:v${BUILD_NUMBER}"
-            }
-            catch (exc) {
-                echo 'Stage: "Push docker image" has failed! Check Dockerhub credentials in Jenkins UI and try again.'
-                throw
             }
         }
     }
