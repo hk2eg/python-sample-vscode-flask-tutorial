@@ -19,7 +19,7 @@ pipeline {
                     sh "docker push hk2802/flask-sample:v${BUILD_NUMBER}"
                 }
                 catch (exc) {
-                    echo 'Stage: "Push docker image" has failed! Check Dockerhub credentials in Jenkins UI and try again.'
+                    echo 'Stage: "Push docker image" has failed! Check Dockerhub credentials and try again.'
                     throw
                 }
             }
