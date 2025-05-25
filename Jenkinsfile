@@ -5,7 +5,7 @@ node('agent-1') {
         }
         catch (exc) {
             echo 'Stage: "Build docker image" has failed! Check Dockerfile for errors.'
-            throw
+            throw exc
         }
     }
 
@@ -15,7 +15,7 @@ node('agent-1') {
         }
         catch (exc) {
             echo 'Stage: "Push docker image" has failed! Check Dockerhub credentials in Jenkins UI and try again.'
-            throw
+            throw exc
         }
     }
 }
