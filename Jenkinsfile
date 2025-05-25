@@ -3,7 +3,7 @@ pipeline{
         label "agent-1"
     }
     environment{
-        XYZ='ITI ITI ITI'
+        random_var='Jenkins-Docker-Push-Test'
     }
     stages{
         stage("build Docker image"){
