@@ -2,7 +2,7 @@
 
 node('agent-1') {
     def image = "hk2802/flask-sample"
-    def version = "v ${env.BUILD_NUMBER}"
+    def version = "v${env.BUILD_NUMBER}"
 
     withCredentials([usernamePassword(
         credentialsId: 'docker-hub-login',
