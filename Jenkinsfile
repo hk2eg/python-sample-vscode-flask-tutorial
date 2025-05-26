@@ -1,3 +1,5 @@
+@Library('jenkins-shared-lib-1')_
+
 node('agent-1') {
     def image = "hk2802/flask-sample"
     def version = env.BUILD_NUMBER
