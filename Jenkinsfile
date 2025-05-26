@@ -1,6 +1,10 @@
 @Library('jenkins-shared-lib-1')_
 
 node('agent-1') {
+
+    stage('Checkout App Repo') {
+    checkout scm
+    }
     def image = "hk2802/flask-sample"
     def version = "v${env.BUILD_NUMBER}"
 
@@ -9,7 +13,7 @@ node('agent-1') {
         usernameVariable: 'DOCKER_USR',
         passwordVariable: 'DOCKER_PSW'
     )]) {
-    dir("${env.WORKSPACE}") {
+
         stage('Build docker image') {
             try {
                 dockerLogin(env.DOCKER_USR, env.DOCKER_PSW)
@@ -20,7 +24,6 @@ node('agent-1') {
                 throw exc
             }
         }
-    }
         stage('Push docker image') {
             try {
                 dockerLogin(env.DOCKER_USR, env.DOCKER_PSW)
