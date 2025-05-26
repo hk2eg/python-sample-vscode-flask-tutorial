@@ -9,7 +9,7 @@ node('agent-1') {
         usernameVariable: 'DOCKER_USR',
         passwordVariable: 'DOCKER_PSW'
     )]) {
-
+    dir("${env.WORKSPACE}") {
         stage('Build docker image') {
             try {
                 dockerLogin(env.DOCKER_USR, env.DOCKER_PSW)
@@ -20,7 +20,7 @@ node('agent-1') {
                 throw exc
             }
         }
-
+    }
         stage('Push docker image') {
             try {
                 dockerLogin(env.DOCKER_USR, env.DOCKER_PSW)
